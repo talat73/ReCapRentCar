@@ -1,9 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
-using System.Collections.Generic;
 
 namespace ConsoleUI
 {
@@ -22,9 +20,10 @@ namespace ConsoleUI
               DailyPrice = 200,
               Description = "Brabus 800 G63"
             };
+
             carManager.AddCar(car1);
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine($"{car.BrandName} - {car.CarName} - {car.ColorName} - {car.DailyPrice}");
             }
@@ -42,7 +41,7 @@ namespace ConsoleUI
             //Color deleteColor = new Color() { ColorId = 1, ColorName = "Black" };
             //colorManager.Delete(deleteColor);
 
-            foreach (var car in colorManager.GetAll())
+            foreach (var car in colorManager.GetAll().Data)
             {
                 Console.WriteLine(car.ColorName);
             }
